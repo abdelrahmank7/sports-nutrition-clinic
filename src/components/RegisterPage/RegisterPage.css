@@ -1,0 +1,67 @@
+/* RegisterPage.css */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.register-container {
+  background-image: url('./Register2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.register-form {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.register-form h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.register-form .ant-form-item {
+  margin-bottom: 15px;
+}
+
+.register-form .ant-input {
+  border-radius: 4px;
+}
+
+.register-form .ant-btn-primary {
+  width: 100%;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  border-radius: 4px;
+  height: 40px;
+  font-size: 16px;
+}
+
+/* ChangeEmailForm styles */
+.change-email-form {
+  margin-top: 20px;
+}
+
+.change-email-form .ant-form-item {
+  margin-bottom: 15px;
+}
+
+.change-email-form .ant-input {
+  border-radius: 4px;
+}
+
+.change-email-form .ant-btn-primary {
+  width: 100%;
+  background-color: #52c41a;
+  border-color: #52c41a;
+  border-radius: 4px;
+  height: 40px;
+  font-size: 16px;
+}

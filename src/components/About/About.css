@@ -1,0 +1,60 @@
+main {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  .map {
+    height: 30rem;
+  }
+  .map iframe {
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+  
+  @media (max-width: 992px) {
+    .map {
+      height: 75%;
+    }
+  }
+
+  /* Footer.css */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.social-media-icons a {
+  margin: 0 10px;
+  color: white; /* Icon color */
+}
+
+.social-media-icons a:hover {
+  color: #ddd; /* Icon hover color */
+}
+
+/* Circle background for icons */
+.social-media-icons a {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.social-icon {
+  margin-left: 10px;
+  margin-right: 10px;
+}
