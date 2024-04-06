@@ -1,14 +1,55 @@
-main {
-    padding: 20px;
+
+.home-container {
     text-align: center;
+    padding: 50px;
+    background: #f5f5f5;
   }
   
-  h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+  .hero-section {
+    background: url('./43258704.jpg') no-repeat center center;
+    background-size:cover;
+    height:  62vw;
+    padding: 100px 0;
   }
   
-  p {
-    font-size: 24px;
-    margin-bottom: 40px;
+  .features-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
   }
+  
+  .feature-card {
+    width: 30%;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .testimonials-section {
+    background: #e9ecef;
+    padding: 50px 0;
+  }
+  
+  .testimonial {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    display: inline-block;
+    border-left: 5px solid #007bff;
+  }
+  
+  .final-cta-section {
+    padding: 50px 0;
+    background: #007bff;
+    color: white;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
