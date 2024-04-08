@@ -8,7 +8,7 @@ import Contact from './components/Contact/Contact';
 import SignInSide from "./components/SignInSide/SignInSide";
 import RegisterPage from "./components/RegisterPage/RegisterPage.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LandingPage from './components/LandingPage/LandingPage';
+// import LandingPage from './components/LandingPage/LandingPage';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path='/SignIn' element={<SignInSide/>}/>
         <Route path='/RegisterPage' element={<RegisterPage/>}/>
-        <Route path='/landingPage' element={<LandingPage/>}/>
+        {/* <Route path='/landingPage' element={<LandingPage/>}/> */}
       </Routes>
     </Router>
   );

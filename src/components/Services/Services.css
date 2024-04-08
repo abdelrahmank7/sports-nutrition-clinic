@@ -1,23 +1,49 @@
-main {
-    padding: 20px;
-    text-align: center;
+.servicesPage {
+  text-align: center;
+  padding: 20px;
+}
+
+.servicesPage h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+.servicesPage p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.services {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service {
+  width: 30%;
+  margin: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.service:hover {
+  transform: scale(1.05);
+}
+
+.service img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  max-height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.service img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .service {
+      width: 100%;
   }
-  
-  h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  li {
-    margin: 10px;
-    font-size: 24px;
-  }
+}
