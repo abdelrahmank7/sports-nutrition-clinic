@@ -49,16 +49,18 @@ const ClientHomePage = () => {
       <Row>
         <Col>
           <div className="card-container">
-            {cards.map((card, index) => (
-              <Card key={index} className="card">
-                <Card.Body>
-                  <Card.Title className="card-title">{card.title}</Card.Title>
-                  <Card.Text className="card-text">{card.text}</Card.Text>
-                  <Link to={card.link} className="card-button">
-                    {card.buttonText}
-                  </Link>
-                </Card.Body>
-              </Card>
+            {cards.map(({ title, text, link, buttonText }, index) => (
+              <React.Fragment key={index}>
+                <Card className="card">
+                  <Card.Body>
+                    <Card.Title className="card-title">{title}</Card.Title>
+                    <Card.Text className="card-text">{text}</Card.Text>
+                    <Link to={link} className="card-button">
+                      {buttonText}
+                    </Link>
+                  </Card.Body>
+                </Card>
+              </React.Fragment>
             ))}
           </div>
         </Col>

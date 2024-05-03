@@ -1,7 +1,6 @@
 /* ClientHomePage.css */
 
 /* Global Styles */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,7 +15,6 @@ body {
 }
 
 /* Card Container Styles */
-
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -25,7 +23,6 @@ body {
 }
 
 /* Card Styles */
-
 .card {
   width: 300px;
   margin: 20px;
@@ -38,22 +35,25 @@ body {
   transform: translateY(-5px);
 }
 
+/* Card Title */
 .card-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
+/* Card Text */
 .card-text {
   font-size: 14px;
   margin-bottom: 20px;
 }
 
+/* Card Button */
 .card-button {
   display: block;
   width: 100%;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #4caf50; /* Green color */
   color: #fff;
   text-align: center;
   text-decoration: none;
@@ -63,20 +63,19 @@ body {
 }
 
 .card-button:hover {
-  background-color: #0062cc;
+  background-color: #45a049; /* Darker green on hover */
 }
 
 /* Responsive Styles */
-
 @media (max-width: 768px) {
- .card {
+  .card {
     width: 100%;
     margin: 20px 0;
   }
 }
 
 @media (max-width: 480px) {
- .card {
+  .card {
     width: 100%;
     margin: 10px 0;
   }
