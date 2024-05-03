@@ -1,74 +1,70 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './ClientHomePage.css'
+import './ClientHomePage.css';
+
+interface CardProps {
+  title: string;
+  text: string;
+  link: string;
+  buttonText: string;
+}
+
+const cards: CardProps[] = [
+  {
+    title: 'My Profile',
+    text: 'View and edit your personal information, dietary preferences, and fitness goals.',
+    link: '/profile',
+    buttonText: 'Update my Information',
+  },
+  {
+    title: 'Direct Message',
+    text: 'Send direct message or question to the clinic.',
+    link: '/direct-message',
+    buttonText: 'Send Message',
+  },
+  {
+    title: 'Meal Plans',
+    text: 'Update your weekly meals to enhance the follow up.',
+    link: '/meal-plans',
+    buttonText: 'Weekly Meals',
+  },
+  {
+    title: 'Workout Plans',
+    text: 'View and update your workout plans.',
+    link: '/workout-plans',
+    buttonText: 'View Workout Plans',
+  },
+  {
+    title: 'Appointments',
+    text: 'Schedule and manage your appointments.',
+    link: '/appointments',
+    buttonText: 'Manage Appointments',
+  },
+];
 
 const ClientHomePage = () => {
-    return (
-      <Container>
-        <Row>
-          <Col>
-            <div className="card-container">
-              <Card className="card">
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <div className="card-container">
+            {cards.map((card, index) => (
+              <Card key={index} className="card">
                 <Card.Body>
-                  <Card.Title className="card-title">My Profile</Card.Title>
-                  <Card.Text className="card-text">
-                    View and edit your personal information, dietary preferences, and fitness goals.
-                  </Card.Text>
-                  <Link to="/profile" className="card-button">
-                    Update my Information
+                  <Card.Title className="card-title">{card.title}</Card.Title>
+                  <Card.Text className="card-text">{card.text}</Card.Text>
+                  <Link to={card.link} className="card-button">
+                    {card.buttonText}
                   </Link>
                 </Card.Body>
               </Card>
-              <Card className="card">
-                <Card.Body>
-                  <Card.Title className="card-title">Direct Message</Card.Title>
-                  <Card.Text className="card-text">
-                    Send direct message or question to the clinic.
-                  </Card.Text>
-                  <Link to="/direct-message" className="card-button">
-                    Send Message
-                  </Link>
-                </Card.Body>
-              </Card>
-              <Card className="card">
-                <Card.Body>
-                  <Card.Title className="card-title">Meal Plans</Card.Title>
-                  <Card.Text className="card-text">
-                    Update your weekly meals to enhance the follow up.
-                  </Card.Text>
-                  <Link to="/meal-plans" className="card-button">
-                    Weekly Meals
-                  </Link>
-                </Card.Body>
-              </Card>
-              <Card className="card">
-                <Card.Body>
-                  <Card.Title className="card-title">Workout Plans</Card.Title>
-                  <Card.Text className="card-text">
-                    View and update your workout plans.
-                  </Card.Text>
-                  <Link to="/workout-plans" className="card-button">
-                    View Workout Plans
-                  </Link>
-                </Card.Body>
-              </Card>
-              <Card className="card">
-                <Card.Body>
-                  <Card.Title className="card-title">Appointments</Card.Title>
-                  <Card.Text className="card-text">
-                    Schedule and manage your appointments.
-                  </Card.Text>
-                  <Link to="/appointments" className="card-button">
-                    Manage Appointments
-                  </Link>
-                </Card.Body>
-              </Card>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    );
+            ))}
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default ClientHomePage;

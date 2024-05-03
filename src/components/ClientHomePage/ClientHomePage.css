@@ -1,49 +1,83 @@
+/* ClientHomePage.css */
+
+/* Global Styles */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Card Container Styles */
+
 .card-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+/* Card Styles */
+
+.card {
+  width: 300px;
+  margin: 20px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.card-button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: #0062cc;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+ .card {
+    width: 100%;
+    margin: 20px 0;
   }
-  
-  .card {
-    border: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 30%;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0 1rem;
+}
+
+@media (max-width: 480px) {
+ .card {
+    width: 100%;
+    margin: 10px 0;
   }
-  
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card-text {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .card-button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .card-button:hover {
-    background-color: #0069d9;
-  }
+}
