@@ -13,106 +13,49 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-class Signin extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      signInEmail: '',
-      signInPassword: ''
-    }
-  }
+const theme = createTheme();
 
-  onEmailChange = (event) => {
-    this.setState({signInEmail: event.target.value})
-  }
+const Copyright = (props) => (
+  <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    {'Copyright © '}
+    <Link color="inherit" href="https://mui.com/">
+      A.K.
+    </Link>{' '}
+    {new Date().getFullYear()}
+    {'.'}
+  </Typography>
+);
 
-  onPasswordChange = (event) => {
-    this.setState({signInPassword: event.target.value})
-  }
+const handleEmailChange = (setSignInEmail) => (event) => {
+  setSignInEmail(event.target.value);
+};
 
-  onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
-    })
-      .then(response => response.json())
-      .then(user => {
-        if (user.id) {
-          this.props.loadUser(user)
-          this.props.onRouteChange('home');
-        }
-      })
-  }
+const handlePasswordChange = (setSignInPassword) => (event) => {
+  setSignInPassword(event.target.value);
+};
 
- class Signin extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      signInEmail: '',
-      signInPassword: ''
-    }
-  }
-
-  onEmailChange = (event) => {
-    this.setState({signInEmail: event.target.value})
-  }
-
-  onPasswordChange = (event) => {
-    this.setState({signInPassword: event.target.value})
-  }
-
-  onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
-    })
-      .then(response => response.json())
-      .then(user => {
-        if (user.id) {
-          this.props.loadUser(user)
-          this.props.onRouteChange('home');
-        }
-      })
-  }
-  
-const { onRouteChange } = this.props;
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        A.K.
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-
-const defaultTheme = createTheme();
-
-export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      id: data.get('id'),
-      password: data.get('password'),
+const handleSubmit = (signInEmail, signInPassword, loadUser, onRouteChange) => (event) => {
+  event.preventDefault();
+  fetch('http://localhost:3000/signin', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: signInEmail, password: signInPassword }),
+  })
+   .then((response) => response.json())
+   .then((user) => {
+      if (user.id) {
+        loadUser(user);
+        onRouteChange('home');
+      }
     });
-  };
+};
+
+const SignInSide = ({ loadUser, onRouteChange }) => {
+  const [signInEmail, setSignInEmail] = React.useState('');
+  const [signInPassword, setSignInPassword] = React.useState('');
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -124,7 +67,7 @@ export default function SignInSide() {
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+              t.palette.mode === 'light'? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -145,16 +88,17 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit(signInEmail, signInPassword, loadUser, onRouteChange)} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="id"
-                label="Id"
-                name="id"
-                autoComplete="id"
+                label="Email"
+                name="email"
+                autoComplete="email"
                 autoFocus
+                value={signInEmail}
+                onChange={handleEmailChange(setSignInEmail)}
               />
               <TextField
                 margin="normal"
@@ -165,6 +109,8 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={signInPassword}
+                onChange={handlePasswordChange(setSignInPassword)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -175,7 +121,6 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                href='/ClientHomePage'
               >
                 Sign In
               </Button>
@@ -193,4 +138,6 @@ export default function SignInSide() {
       </Grid>
     </ThemeProvider>
   );
-}
+};
+
+export default SignInSide;
