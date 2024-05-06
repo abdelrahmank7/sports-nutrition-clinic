@@ -14,7 +14,7 @@ const cards: CardProps[] = [
   {
     title: 'My Profile',
     text: 'View and edit your personal information, dietary preferences, and fitness goals.',
-    link: '/profile',
+    link: '/contact',
     buttonText: 'Update my Information',
   },
   {

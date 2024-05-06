@@ -13,6 +13,78 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+class Signin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signInEmail: '',
+      signInPassword: ''
+    }
+  }
+
+  onEmailChange = (event) => {
+    this.setState({signInEmail: event.target.value})
+  }
+
+  onPasswordChange = (event) => {
+    this.setState({signInPassword: event.target.value})
+  }
+
+  onSubmitSignIn = () => {
+    fetch('http://localhost:3000/signin', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(response => response.json())
+      .then(user => {
+        if (user.id) {
+          this.props.loadUser(user)
+          this.props.onRouteChange('home');
+        }
+      })
+  }
+
+ class Signin extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signInEmail: '',
+      signInPassword: ''
+    }
+  }
+
+  onEmailChange = (event) => {
+    this.setState({signInEmail: event.target.value})
+  }
+
+  onPasswordChange = (event) => {
+    this.setState({signInPassword: event.target.value})
+  }
+
+  onSubmitSignIn = () => {
+    fetch('http://localhost:3000/signin', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(response => response.json())
+      .then(user => {
+        if (user.id) {
+          this.props.loadUser(user)
+          this.props.onRouteChange('home');
+        }
+      })
+  }
+  
+const { onRouteChange } = this.props;
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -26,7 +98,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
@@ -109,13 +180,8 @@ export default function SignInSide() {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/RegisterPage" variant="body2" align='center'>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
