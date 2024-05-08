@@ -26,34 +26,93 @@ const Copyright = (props) => (
   </Typography>
 );
 
-const handleEmailChange = (setSignInEmail) => (event) => {
-  setSignInEmail(event.target.value);
+const handleIdInputChange = (setSignInId) => (event) => {
+  setSignInId(event.target.value);
 };
 
-const handlePasswordChange = (setSignInPassword) => (event) => {
+const handlePasswordInputChange = (setSignInPassword) => (event) => {
   setSignInPassword(event.target.value);
 };
 
-const handleSubmit = (signInEmail, signInPassword, loadUser, onRouteChange) => (event) => {
-  event.preventDefault();
-  fetch('http://localhost:3000/signin', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: signInEmail, password: signInPassword }),
-  })
-   .then((response) => response.json())
-   .then((user) => {
+const SignInForm = ({ loadUser, onRouteChange }) => {
+  const [signInId, setSignInId] = React.useState('');
+  const [signInPassword, setSignInPassword] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:3001/signin', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: signInId, password: signInPassword }),
+      });
+      const user = await response.json();
       if (user.id) {
         loadUser(user);
-        onRouteChange('home');
+        onRouteChange('/ClientHomePage');
+      } else {
+        // Handle invalid credentials
+        setError('Invalid credentials');
       }
-    });
+    } catch (error) {
+      console.error(error);
+      setError('Error: ', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+      <TextField
+        margin="normal"
+        required
+        fullWidth
+        label="Id"
+        name="Id"
+        autoComplete="Id"
+        autoFocus
+        value={signInId}
+        onChange={handleIdInputChange(setSignInId)}
+      />
+      <TextField
+        margin="normal"
+        required
+        fullWidth
+        name="password"
+        label="Password"
+        type="password"
+        id="password"
+        autoComplete="current-password"
+        value={signInPassword}
+        onChange={handlePasswordInputChange(setSignInPassword)}
+      />
+      <FormControlLabel
+        control={<Checkbox value="remember" color="primary" />}
+        label="Remember me"
+      />
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+        disabled={loading}
+      >
+        {loading? 'Loading...' : 'Sign In'}
+      </Button>
+      {error && (
+        <Typography color="error" variant="body2">
+          {error}
+        </Typography>
+      )}
+    </Box>
+  );
 };
 
 const SignInSide = ({ loadUser, onRouteChange }) => {
-  const [signInEmail, setSignInEmail] = React.useState('');
-  const [signInPassword, setSignInPassword] = React.useState('');
-
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -82,57 +141,21 @@ const SignInSide = ({ loadUser, onRouteChange }) => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: 'econdary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit(signInEmail, signInPassword, loadUser, onRouteChange)} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                label="Email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                value={signInEmail}
-                onChange={handleEmailChange(setSignInEmail)}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={signInPassword}
-                onChange={handlePasswordChange(setSignInPassword)}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item>
-                  <Link href="/RegisterPage" variant="body2" align='center'>
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
+            <SignInForm loadUser={loadUser} onRouteChange={onRouteChange} />
+            <Grid container>
+              <Grid item>
+                <Link href="/RegisterPage" variant="body2" align='center'>
+                  {"Don't have an account? Sign Up"}
+                </Link>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
+            </Grid>
+            <Copyright sx={{ mt: 5 }} />
           </Box>
         </Grid>
       </Grid>
