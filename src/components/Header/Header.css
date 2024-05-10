@@ -1,27 +1,48 @@
-.navbar-toggler-icon {
-  color: #fff;
-  border-color: #fff;
+/* Header.css */
+.navbar {
+  background-color: #343a40;
 }
 
-.navbar-collapse {
-  flex-grow: 0;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #fff;
+  transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 .nav-link {
   color: #fff;
-  padding: 0 10px;
+  margin-right: 1rem;
+  transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
-.nav-link:hover {
+.nav-link:hover, .navbar-brand:hover {
   color: #ccc;
 }
 
 .social-icon {
-  color: #fff;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
+  height: 40px;
+  width: 40px;
+  margin-right: 1rem;
+  transition: transform 0.3s; /* Smooth transition for hover effect */
 }
 
 .social-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.1); /* Slight increase in size on hover */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 576px) {
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+
+  .social-icon {
+    margin: 0 0.5rem 0.5rem 0;
+  }
 }

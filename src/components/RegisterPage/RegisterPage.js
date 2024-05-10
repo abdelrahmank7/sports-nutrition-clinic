@@ -1,99 +1,118 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, message, Image } from 'antd';
+import * as React from 'react';
+import { useState } from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import './RegisterPage.css';
+import { message } from 'antd';
+
+const theme = createTheme();
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [id, setId] = useState('');
-
   const history = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    if (password === confirmPassword) {
-      // Create user with email and password
-      // Redirect to another page
-message.success('User registered successfully!');
-      history.push('/');
-    } else {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
       message.error('Passwords do not match!');
+      return;
     }
+    message.success('User registered successfully!');
+    history.push('/');
   };
 
   return (
-    <div className="register-container">
-      <div className="image-container">
-      </div>
-        <div className="register-form">
-          <h1>Register</h1>
-          <Form onSubmit={handleSubmit}>
-            <Form.Item>
-              <Input
-                type="email"
-                placeholder="Email"
+    <ThemeProvider theme={theme}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
+        <CssBaseline />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              {/* Add an icon here */}
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Register
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Email"
+                name="email"
+                autoComplete="email"
+                autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </Form.Item>
-            <Form.Item>
-              <Input
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
                 type="password"
-                placeholder="Password"
+                id="password"
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </Form.Item>
-            <Form.Item>
-              <Input
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="Confirm Password"
                 type="password"
-                placeholder="Confirm Password"
+                id="confirmPassword"
+                autoComplete="current-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
-            </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
                 Register
               </Button>
-            </Form.Item>
-          </Form>
-          {id && (
-            <ChangeEmailForm id={id} onSubmit={(id, email) => console.log(`Changing email for user ${id} to ${email}`)} />
-          )}
-        </div>
-    </div>
-  );
-};
-
-const ChangeEmailForm = ({ id, onSubmit }) => {
-  const [newEmail, setNewEmail] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    onSubmit(id, newEmail);
-  };
-
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Item>
-        <Input
-          type="email"
-          placeholder="New Email"
-          value={newEmail}
-          onChange={(e) => setNewEmail(e.target.value)}
+            </Box>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         />
-      </Form.Item>
-      <Form.Item>
-       <Button type="primary" htmlType="submit">
-          Change Email
-        </Button>
-      </Form.Item>
-    </Form>
+      </Grid>
+    </ThemeProvider>
   );
 };
 
