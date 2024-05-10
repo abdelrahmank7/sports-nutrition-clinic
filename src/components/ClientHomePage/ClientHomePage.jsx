@@ -3,14 +3,9 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './ClientHomePage.css';
 
-interface CardProps {
-  title: string;
-  text: string;
-  link: string;
-  buttonText: string;
-}
 
-const cards: CardProps[] = [
+// Define an array of card objects
+const cards = [
   {
     title: 'My Profile',
     text: 'View and edit your personal information, dietary preferences, and fitness goals.',
@@ -44,25 +39,22 @@ const cards: CardProps[] = [
 ];
 
 const ClientHomePage = () => {
+  // Use destructuring assignment to extract props from the cards array
   return (
-    <Container>
+    <Container className="client-home-page">
       <Row>
-        <Col>
-          <div className="card-container">
-            {cards.map(({ title, text, link, buttonText }, index) => (
-              <React.Fragment key={index}>
-                <Card className="card">
-                  <Card.Body>
-                    <Card.Title className="card-title">{title}</Card.Title>
-                    <Card.Text className="card-text">{text}</Card.Text>
-                    <Link to={link} className="card-button">
-                      {buttonText}
-                    </Link>
-                  </Card.Body>
-                </Card>
-              </React.Fragment>
-            ))}
-          </div>
+        <Col xs={12} md={6} lg={4} className="card-column">
+          {cards.map(({ title, text, link, buttonText }, index) => (
+            <Card key={index} className="card">
+              <Card.Body>
+                <Card.Title className="card-title">{title}</Card.Title>
+                <Card.Text className="card-text">{text}</Card.Text>
+                <Link to={link} className="card-button">
+                  {buttonText}
+                </Link>
+              </Card.Body>
+            </Card>
+          ))}
         </Col>
       </Row>
     </Container>

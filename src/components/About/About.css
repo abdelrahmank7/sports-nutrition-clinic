@@ -1,52 +1,56 @@
+/* About.css */
+
 main {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    font-size: 24px;
-    margin-bottom: 40px;
-  }
+  padding: 20px;
+  text-align: center;
+}
 
-  .map {
-    height: 30rem;
-  }
-  .map iframe {
-    pointer-events: none;
-    height: 100%;
-    width: 100%;
-    border: 0;
-  }
-  
-  @media (max-width: 992px) {
-    .map {
-      height: 75%;
-    }
-  }
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
 
-  /* Footer.css */
+p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.map-container {
+  height: 30rem;
+}
+
+.map-container iframe {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  border: 0;
+}
+
+@media (max-width: 992px) {
+  .map-container {
+    height: 75vh;
+  }
+}
+
+/* Footer.css */
+
 .footer {
   text-align: center;
   padding: 20px;
   background-color: #333;
-  color: white;
+  color: #fff; 
 }
 
 .social-media-icons a {
   margin: 0 10px;
-  color: white; /* Icon color */
+  color: #fff; 
+  transition: color 0.2s ease; 
 }
 
 .social-media-icons a:hover {
-  color: #ddd; /* Icon hover color */
+  color: #ddd;
 }
 
-/* Circle background for icons */
 .social-media-icons a {
   display: inline-block;
   background-color: #fff;
@@ -55,6 +59,5 @@ main {
 }
 
 .social-icon {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
 }
