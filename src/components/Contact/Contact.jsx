@@ -1,10 +1,9 @@
-// Contact.js
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import './Contact.css';
 
-// ContactItem component
 const ContactItem = ({ title, content, className }) => (
   <div className={`contact-item ${className || ''}`}>
     <h3>{title}</h3>
@@ -12,14 +11,12 @@ const ContactItem = ({ title, content, className }) => (
   </div>
 );
 
-// PropTypes for ContactItem
 ContactItem.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 
-// FormField component
 const FormField = ({ label, type, name, register, error, required, marginBottom }) => (
   <div className={`form-field ${marginBottom ? 'margin-bottom' : ''}`}>
     <label>
@@ -30,7 +27,6 @@ const FormField = ({ label, type, name, register, error, required, marginBottom 
   </div>
 );
 
-// PropTypes for FormField
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -41,38 +37,31 @@ FormField.propTypes = {
   marginBottom: PropTypes.bool,
 };
 
-// FormError component
 const FormError = ({ message }) => <div className="form-error">{message}</div>;
 
-// PropTypes for FormError
 FormError.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-// FormHeader component
 const FormHeader = ({ title, className }) => <h3 className={`form-header ${className || ''}`}>{title}</h3>;
 
-// PropTypes for FormHeader
 FormHeader.propTypes = {
   title: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
-// SubmitButton component
 const SubmitButton = ({ text, className, disabled }) => (
   <button type="submit" className={`submit-button ${className || ''}`} disabled={disabled}>
     {text}
   </button>
 );
 
-// PropTypes for SubmitButton
 SubmitButton.propTypes = {
   text: PropTypes.string.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
 };
 
-// ContactDetails component
 const ContactDetails = ({ className }) => (
   <div className={`contact-details ${className || ''}`}>
     <ContactItem title="Location" content="Adresssssss" />
@@ -81,18 +70,16 @@ const ContactDetails = ({ className }) => (
   </div>
 );
 
-// PropTypes for ContactDetails
 ContactDetails.propTypes = {
   className: PropTypes.string,
 };
 
-// ContactForm component
 const ContactForm = ({ className }) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     console.log('Form data submitted:', data);
-    // Handle form submission (e.g., send data to backend)
+    // send data to backend
   };
 
   return (
@@ -130,12 +117,10 @@ const ContactForm = ({ className }) => {
   );
 };
 
-// PropTypes for ContactForm
 ContactForm.propTypes = {
   className: PropTypes.string,
 };
 
-// Contact component
 const Contact = ({ className }) => (
   <div className={`contact-us-container ${className || ''}`}>
     <h2>Contact Us</h2>
@@ -145,7 +130,7 @@ const Contact = ({ className }) => (
   </div>
 );
 
-// PropTypes for Contact
+
 Contact.propTypes = {
   className: PropTypes.string,
 };

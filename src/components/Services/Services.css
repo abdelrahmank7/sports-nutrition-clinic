@@ -1,49 +1,66 @@
+
 .servicesPage {
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-.servicesPage h1 {
-  font-size: 2.5em;
+.services-header {
   color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-.servicesPage p {
-  font-size: 1.2em;
-  color: #666;
+.services-intro {
+  color: #555;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-.services {
+.services-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .service {
-  width: 30%;
-  margin: 15px;
-  transition: transform 0.3s ease-in-out;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease;
 }
 
 .service:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
 }
 
-.service img {
+.service-image {
   width: 100%;
   height: auto;
-  max-width: 300px;
-  max-height: 200px;
-  object-fit: cover;
-  transition: transform 0.3s ease-in-out;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-.service img:hover {
-  transform: scale(1.1);
+.service-title {
+  color: #222;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.service-description {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
-  .service {
-      width: 100%;
+  .services-container {
+    flex-direction: column;
+    align-items: center;
   }
 }

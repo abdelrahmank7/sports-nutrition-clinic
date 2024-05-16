@@ -1,6 +1,4 @@
-/* ClientHomePage.css */
 
-/* Global Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,20 +12,19 @@ body {
   background-color: #f9f9f9;
 }
 
-/* Card Container Styles */
+
 .card-container {
   display: flex ;
   flex-wrap: wrap ;
-  justify-content: center; /* Add this line to center the cards */
-  align-items: center; /* Add this line to vertically center the cards */
+  justify-content: center;
+  align-items: center;
   margin: 40px auto;
 }
 
-/* Card Styles */
 .card {
   width: 300px;
-  padding: 20px; /* Add padding */
-  margin: 0; /* Remove margin */
+  padding: 20px;
+  margin: 0; 
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -37,39 +34,35 @@ body {
   transform: translateY(-5px);
 }
 
-/* Card Title */
 .card-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Card Text */
 .card-text {
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-/* Card Button */
 .card-button {
   display: block;
   width: 100%;
   padding: 10px 20px;
-  background-color: #4caf50; /* Green color */
+  background-color: #4caf50;
   color: #fff;
   text-align: center;
   text-decoration: none;
   border: none;
   border-radius: 0;
   transition: background-color 0.3s ease;
-  cursor: pointer; /* Add cursor pointer to indicate a clickable element */
+  cursor: pointer;
 }
 
 .card-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .card {
     width: 100%;

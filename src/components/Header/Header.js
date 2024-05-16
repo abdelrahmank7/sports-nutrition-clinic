@@ -4,7 +4,6 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { SocialIcon } from 'react-social-icons';
 
 const Header = () => {
-  // Use a function to handle repetitive tasks like rendering Nav.Link
   const renderNavLink = (href, text) => (
     <Nav.Link href={href} className="nav-link">{text}</Nav.Link>
   );

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './ClientHomePage.css';
 
 
-// Define an array of card objects
 const cards = [
   {
     title: 'My Profile',
@@ -39,7 +38,6 @@ const cards = [
 ];
 
 const ClientHomePage = () => {
-  // Use destructuring assignment to extract props from the cards array
   return (
     <Container className="client-home-page">
       <Row>

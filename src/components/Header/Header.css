@@ -29,14 +29,13 @@
   height: 40px;
   width: 40px;
   margin-right: 1rem;
-  transition: transform 0.3s; /* Smooth transition for hover effect */
+  transition: transform 0.3s;
 }
 
 .social-icon:hover {
-  transform: scale(1.1); /* Slight increase in size on hover */
+  transform: scale(1.1); 
 }
 
-/* Adjustments for smaller screens */
 @media (max-width: 576px) {
   .navbar-nav {
     margin-top: 1rem;
