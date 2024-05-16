@@ -8,7 +8,9 @@ import Contact from './components/Contact/Contact';
 import SignInSide from "./components/SignInSide/SignInSide";
 import RegisterPage from "./components/RegisterPage/RegisterPage.js";
 import ClientHomePage from './components/ClientHomePage/ClientHomePage';
+import MyInfo from './components/MyInfo/MyInfo.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
         <Route path='/SignIn' element={<SignInSide/>}/>
         <Route path='/RegisterPage' element={<RegisterPage/>}/>
         <Route path='/ClientHomePage' element={<ClientHomePage/>}/>
+        <Route path='/MyInfo' element={<MyInfo/>}/>
 
       </Routes>
     </Router>
